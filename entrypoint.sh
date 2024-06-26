@@ -6,14 +6,19 @@ set -euo pipefail
 export FRONTEND_DOMAIN=${FRONTEND_DOMAIN:-${FRONTEND_HOST%:*}}
 export FRONTEND_PORT=${FRONTEND_PORT:-${FRONTEND_HOST##*:}}
 
+export DASHBOARD_DOMAIN=${DASHBOARD_DOMAIN:-${DASHBOARD_HOST%:*}}
+export DASHBOARD_PORT=${DASHBOARD_PORT:-${DASHBOARD_HOST##*:}}
+
 export BACKEND_DOMAIN=${BACKEND_DOMAIN:-${BACKEND_HOST%:*}}
 export BACKEND_PORT=${BACKEND_PORT:-${BACKEND_HOST##*:}}
 
 # strip https:// or https:// from domain if necessary
 FRONTEND_DOMAIN=${FRONTEND_DOMAIN##*://}
+DASHBOARD_DOMAIN=${DASHBOARD_DOMAIN##*://}
 BACKEND_DOMAIN=${BACKEND_DOMAIN##*://}
 
 echo using frontend: ${FRONTEND_DOMAIN} with port: ${FRONTEND_PORT}
+echo using dashboard: ${DASHBOARD_DOMAIN} with port: ${DASHBOARD_PORT}
 echo using backend: ${BACKEND_DOMAIN} with port: ${BACKEND_PORT}
 
 exec caddy run --config Caddyfile --adapter caddyfile 2>&1
