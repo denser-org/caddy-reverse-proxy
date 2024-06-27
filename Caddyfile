@@ -85,7 +85,7 @@
 	# use `handle` instead of `handle_path` if you dont want to strip the /api/ path
 	# this is needed if your backend's api routes don't start with /api/
 	# change paths as needed
-	handle {$BACKEND_PATH:/api}/* {
+	handle /api/* {
 		# the /api/ prefix WILL be stripped from the uri sent to the proxy host
 		#
 		# proxy all requests for /api/* to the backend, configure this variable in the service settings
@@ -110,12 +110,12 @@
 		}
 	}
 
-	handle_path /ws {
-		@ws {
-			header Connection *Upgrade*
-			header Upgrade websocket
-		}
+	# handle_path /ws {
+	# 	@ws {
+	# 		header Connection *Upgrade*
+	# 		header Upgrade websocket
+	# 	}
 
-    reverse_proxy fw979y3ga4.execute-api.us-west-2.amazonaws.com/staging
-	}
+  #   reverse_proxy fw979y3ga4.execute-api.us-west-2.amazonaws.com/staging
+	# }
 }
