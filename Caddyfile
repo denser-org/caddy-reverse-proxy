@@ -55,10 +55,8 @@
 		header_up Host {upstream_hostport}
 	}
 
-	handle /u/* {
-		# the /api/ prefix WILL be stripped from the uri sent to the proxy host
-		#
-		# proxy all requests for /api/* to the backend, configure this variable in the service settings
+	redir /u /u/ 301
+	handle_path /u/* {
 		reverse_proxy {
 			# for private networking replicas are exposed as multiple dns results, use those dns results as the upstreams
 			dynamic a {
@@ -80,13 +78,7 @@
 		}
 	}
 
-	# the handle_path directive WILL strip /api/ from the path before proxying
-	# use `handle` instead of `handle_path` if you dont want to strip the /api/ path
-	# this is needed if your backend's api routes don't start with /api/
-	# change paths as needed
 	handle /api/* {
-		# the /api/ prefix WILL be stripped from the uri sent to the proxy host
-		#
 		# proxy all requests for /api/* to the backend, configure this variable in the service settings
 		reverse_proxy {
 			# for private networking replicas are exposed as multiple dns results, use those dns results as the upstreams

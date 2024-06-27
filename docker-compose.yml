@@ -4,7 +4,7 @@ services:
   proxy:
     build: .
     ports:
-      - "8090:8090"
+      - "8080:8090"
     environment:
       - FRONTEND_HOST=frontend
       - FRONTEND_PORT=3000
@@ -22,5 +22,5 @@ services:
   api:
     image: denser-web/api
     environment:
-      - NODE_ENV=staging
+      - NODE_ENV=development
       - PORT=8001
