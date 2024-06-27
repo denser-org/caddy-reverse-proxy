@@ -56,7 +56,7 @@
 	}
 
 	redir /u /u/ 301
-	handle_path /u/* {
+	handle_path /u* {
 		reverse_proxy {
 			# for private networking replicas are exposed as multiple dns results, use those dns results as the upstreams
 			dynamic a {
