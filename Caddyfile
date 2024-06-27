@@ -55,8 +55,7 @@
 		header_up Host {upstream_hostport}
 	}
 
-	redir /u /u/ 301
-	handle_path /u/* {
+	handle /u/* {
 		# the /api/ prefix WILL be stripped from the uri sent to the proxy host
 		#
 		# proxy all requests for /api/* to the backend, configure this variable in the service settings
