@@ -115,6 +115,6 @@
 			header Upgrade websocket
 		}
 
-    reverse_proxy https://fw979y3ga4.execute-api.us-west-2.amazonaws.com/staging
+    reverse_proxy fw979y3ga4.execute-api.us-west-2.amazonaws.com/staging
 	}
 }
