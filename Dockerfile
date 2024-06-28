@@ -1,13 +1,17 @@
-FROM caddy:latest
+# FROM caddy:latest
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY Caddyfile ./
+# COPY Caddyfile ./
 
-COPY --chmod=755 entrypoint.sh ./
+# COPY --chmod=755 entrypoint.sh ./
 
-RUN caddy fmt --overwrite Caddyfile
+# RUN caddy fmt --overwrite Caddyfile
 
-ENTRYPOINT ["/bin/sh"]
+# ENTRYPOINT ["/bin/sh"]
 
-CMD ["entrypoint.sh"]
+# CMD ["entrypoint.sh"]
+
+FROM nginx:latest
+
+COPY denser.conf /etc/nginx/conf.d/default.conf

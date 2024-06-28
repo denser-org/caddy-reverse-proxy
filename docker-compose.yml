@@ -4,9 +4,10 @@ services:
   proxy:
     build: .
     volumes:
-      - ./Caddyfile:/app/Caddyfile
+      # - ./Caddyfile:/app/Caddyfile
+      - ./denser.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - "8080:8090"
+      - "8080:80"
     environment:
       - FRONTEND_HOST=frontend
       - FRONTEND_PORT=3000
@@ -14,7 +15,6 @@ services:
       - DASHBOARD_PORT=8080
       - BACKEND_HOST=api
       - BACKEND_PORT=8001
-      - PORT=8090
 
   frontend:
     image: denser-web/landing
@@ -22,7 +22,7 @@ services:
   dashboard:
     image: denser-web/dashboard
 
-  api:
+  backend:
     image: denser-web/api
     environment:
       - NODE_ENV=development
