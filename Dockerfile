@@ -14,4 +14,4 @@
 
 FROM nginx:latest
 
-COPY denser.conf /etc/nginx/conf.d/default.conf
+COPY denser.conf /etc/nginx/conf.d/denser.conf
