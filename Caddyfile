@@ -107,9 +107,9 @@
 			header Upgrade websocket
 		}
 
-		reverse_proxy /staging  fw979y3ga4.execute-api.us-west-2.amazonaws.com:443 {
+		reverse_proxy /staging 4habiu6xm6.execute-api.us-west-2.amazonaws.com {
 
-			header_up Host fw979y3ga4.execute-api.us-west-2.amazonaws.com
+			header_up Host 4habiu6xm6.execute-api.us-west-2.amazonaws.com
 		}
 	}
 }
