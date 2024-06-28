@@ -102,6 +102,15 @@
 	}
 
 	handle_path /ws {
-    reverse_proxy 4habiu6xm6.execute-api.us-west-2.amazonaws.com/production
+		@ws {
+			header Connection *Upgrade*
+			header Upgrade websocket
+		}
+  	reverse_proxy @ws 192.168.0.106:3001
+
+		reverse_proxy /staging  fw979y3ga4.execute-api.us-west-2.amazonaws.com:443 {
+
+			header_up Host fw979y3ga4.execute-api.us-west-2.amazonaws.com
+		}
 	}
 }
