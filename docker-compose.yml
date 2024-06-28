@@ -3,6 +3,8 @@ version: "3"
 services:
   proxy:
     build: .
+    volumes:
+      - ./Caddyfile:/app/Caddyfile
     ports:
       - "8080:8090"
     environment:
@@ -13,6 +15,7 @@ services:
       - BACKEND_HOST=api
       - BACKEND_PORT=8001
       - PORT=8090
+
   frontend:
     image: denser-web/landing
 
