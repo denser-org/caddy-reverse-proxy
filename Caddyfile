@@ -102,20 +102,6 @@
 	}
 
 	handle_path /ws {
-		@ws {
-			path /staging/@connections
-			header Connection *Upgrade*
-			header Upgrade websocket
-		}
-
-    reverse_proxy @ws fw979y3ga4.execute-api.us-west-2.amazonaws.com {
-			# header_up Host {upstream_hostport}
-			header_up X-Real-IP {http.request.remote}
-  		header_up X-Forwarded-For {http.request.remote}
-			header_up Host "fw979y3ga4.execute-api.us-west-2.amazonaws.com"
-			transport http {
-				versions 1.1
-			}
-		}
+    reverse_proxy /staging fw979y3ga4.execute-api.us-west-2.amazonaws.com
 	}
 }
