@@ -102,9 +102,9 @@
 	}
 
 	handle_path /ws {
-		reverse_proxy staging fw979y3ga4.execute-api.us-west-2.amazonaws.com {
-			header_up Host fw979y3ga4.execute-api.us-west-2.amazonaws.com
+		rewrite * /${STAGE}{uri}
+		reverse_proxy ${CHAT_API_URL} {
+			header_up Host {upstream_hostport}
 		}
-		# reverse_proxy ws 192.168.0.106:3001
 	}
 }
