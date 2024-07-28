@@ -118,10 +118,11 @@
   # }
 
 	route /boticons/* {
-		root * /icons
+		root * /
 		s3proxy {
 			bucket {$S3_BUCKET}
 			region {$S3_REGION}
+			force_path_style
 		}
 	}
 }
