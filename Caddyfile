@@ -116,7 +116,7 @@
   #   proxy_set_header X-Forwarded-Proto https;
   # }
 
-	handle /boticons/* {
+	route /boticons/* {
 		s3proxy {
 			bucket {$S3_BUCKET}
 			region {$S3_REGION}
