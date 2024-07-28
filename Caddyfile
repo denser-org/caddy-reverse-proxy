@@ -11,6 +11,7 @@
 	servers {
 		trusted_proxies static private_ranges # trust railway's proxy
 	}
+	order s3proxy last
 }
 
 (lb_settings) {
