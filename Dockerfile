@@ -1,6 +1,12 @@
-FROM caddy:latest
+FROM caddy:latest-builder AS builder
 
-WORKDIR /app
+RUN xcaddy build --with github.com/lindenlab/caddy-s3-proxy
+
+FROM caddy:latest AS runner
+
+WORKDIR /ap
+
+COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 COPY Caddyfile ./
 

@@ -107,4 +107,19 @@
 			header_up Host {upstream_hostport}
 		}
 	}
+
+	# location /boticons {
+  #   alias /home/ubuntu/s3/prod_customize;
+  #   proxy_set_header Host $host;
+  #   proxy_set_header X-Real-IP $remote_addr;
+  #   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  #   proxy_set_header X-Forwarded-Proto https;
+  # }
+
+	handle /boticons/* {
+		s3proxy {
+			bucket {$S3_BUCKET}
+			region {$S3_REGION}
+		}
+	}
 }
