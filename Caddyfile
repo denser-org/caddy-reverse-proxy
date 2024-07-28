@@ -118,7 +118,7 @@
   # }
 
 	route /boticons/* {
-		root * /
+		rewrite * /{path}/boticons
 		s3proxy {
 			bucket {$S3_BUCKET}
 			region {$S3_REGION}
