@@ -118,7 +118,7 @@
   # }
 
 	route /boticons/icons/* {
-		uri strip_prefix /icons
+		uri strip_prefix /boticons
 		s3proxy {
 			bucket {$S3_BUCKET}
 			region {$S3_REGION}
