@@ -1,4 +1,4 @@
-FROM caddy:latest-builder AS builder
+FROM caddy:builder AS builder
 
 RUN xcaddy build --with github.com/lindenlab/caddy-s3-proxy
 
